@@ -14,8 +14,13 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>MAIN</div>}/>
                 <Route path={'/login/*'} element={<div>LOGIN</div>}/>
-                <Route path={'/profile/*'} element={<div>PROFILE</div>}/>
-                {/*<Route path={'/profile/settings'} element={<div>SETTINGS</div>}/>*/}
+                <Route path={'/profile/*'} element={
+                    <div>
+                        PROFILE
+                        <Routes>
+                            <Route path={'/settings'} element={<div>SETTINGS</div>}/>
+                        </Routes>
+                    </div>}/>
             </Routes>
 
             {/*<NavLink to={'/'}>main</NavLink>...*/}
