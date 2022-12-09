@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, Route, Routes} from 'react-router-dom';
+import {NavLink, Outlet, Route, Routes} from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -14,14 +14,28 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>MAIN</div>}/>
                 <Route path={'/login/*'} element={<div>LOGIN</div>}/>
-                <Route path={'/profile/*'} element={
+                <Route path={'/profile'} element={(
                     <div>
                         PROFILE
-                        <Routes>
-                            <Route path={'/settings'} element={<div>SETTINGS</div>}/>
-                        </Routes>
-                    </div>}/>
+                        <Outlet/>
+                    </div>
+                )}>
+                    <Route path={'/profile/settings'} element={<div>SETTINGS</div>}/>
+                </Route>
             </Routes>
+
+            {/*<Routes>*/}
+            {/*    <Route path={'/*'} element={<div>404</div>}/>*/}
+            {/*    <Route path={'/'} element={<div>MAIN</div>}/>*/}
+            {/*    <Route path={'/login/*'} element={<div>LOGIN</div>}/>*/}
+            {/*    <Route path={'/profile/*'} element={*/}
+            {/*        <div>*/}
+            {/*            PROFILE*/}
+            {/*            <Routes>*/}
+            {/*                <Route path={'/settings'} element={<div>SETTINGS</div>}/>*/}
+            {/*            </Routes>*/}
+            {/*        </div>}/>*/}
+            {/*</Routes>*/}
 
             {/*<NavLink to={'/'}>main</NavLink>...*/}
             {/*<NavLink to={'/login'}>login</NavLink>...*/}
