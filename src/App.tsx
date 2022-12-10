@@ -1,31 +1,61 @@
 import React from 'react';
-import {NavLink, Outlet, Route, Routes} from 'react-router-dom';
+import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom';
 import './App.css';
 
+const Profile = ()=>{
+    const params = useParams<'id'>() //достаем параметры(объект с id:); <> для подсказки params.id
+    const  some = params
+    console.log(some)  //1
+    return <div>PROFILE</div>
+}
 function App() {
     return (
         <div className="App">
-            <NavLink to={''}>main</NavLink>...
+            <NavLink to={'/'}>main</NavLink>...
             <NavLink to={'/login'}>login</NavLink>...
             <NavLink to={'/profile'}>profile</NavLink>...
-            <NavLink to={'/profile/settings'}>settings</NavLink>
+            <NavLink to={'/profile/1'}>profile/1</NavLink>
 
             <Routes>
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>MAIN</div>}/>
-                <Route path={'/login/*'} element={<div>LOGIN</div>}/>
-                <Route path={'/profile'} element={(
-                    <div>
-                        PROFILE
-                        <Outlet/>
-                    </div>
-                )}>
-                    <Route path={'*'} element={<div>profile page not found</div>}/>
-                    <Route index element={<div>CHECK ID</div>}/> // если нет параметров
-                    <Route path={':id'} element={<div>-ID-</div>}/>
-                    <Route path={'settings'} element={<div>SETTINGS</div>}/>
-                </Route>
+                <Route path={'/login'} element={<div>LOGIN</div>}/>
+                <Route path={'/profile/:id'} element={<Profile/>}/>
             </Routes>
+
+            {/*<Routes>*/}
+            {/*    <Route path={'/*'} element={<div>404</div>}/>*/}
+            {/*    <Route path={'/'} element={<div>MAIN</div>}/>*/}
+            {/*    <Route path={'/login/*'} element={<div>LOGIN</div>}/>*/}
+            {/*    <Route path={'/profile/*'} element={(      // /**/}
+            {/*        <div>*/}
+            {/*            PROFILE*/}
+            {/*            <Outlet/>*/}
+            {/*        </div>*/}
+            {/*    )}>*/}
+            {/*        /!*<Route path={'*'} element={<div>profile page not found</div>}/>*!/  //*/}
+            {/*        <Route index element={<div>CHECK ID</div>}/> // если нет параметров*/}
+            {/*        <Route path={':id'} element={<div>-ID-</div>}/>*/}
+            {/*        <Route path={'settings'} element={<div>SETTINGS</div>}/>*/}
+            {/*    </Route>*/}
+            {/*</Routes>*/}
+
+            {/*<Routes>*/}
+            {/*    <Route path={'/*'} element={<div>404</div>}/>*/}
+            {/*    <Route path={'/'} element={<div>MAIN</div>}/>*/}
+            {/*    <Route path={'/login/*'} element={<div>LOGIN</div>}/>*/}
+            {/*    <Route path={'/profile'} element={(*/}
+            {/*        <div>*/}
+            {/*            PROFILE*/}
+            {/*            <Outlet/>*/}
+            {/*        </div>*/}
+            {/*    )}>*/}
+            {/*        <Route path={'*'} element={<div>profile page not found</div>}/>*/}
+            {/*        <Route index element={<div>CHECK ID</div>}/> // если нет параметров*/}
+            {/*        <Route path={':id'} element={<div>-ID-</div>}/>*/}
+            {/*        <Route path={'settings'} element={<div>SETTINGS</div>}/>*/}
+            {/*    </Route>*/}
+            {/*</Routes>*/}
 
             {/*<Routes>*/}
             {/*    <Route path={'/*'} element={<div>404</div>}/>*/}
