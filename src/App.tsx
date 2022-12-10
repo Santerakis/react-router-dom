@@ -3,8 +3,8 @@ import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom';
 import './App.css';
 
 const Profile = ()=>{
-    const params = useParams<'x'|'y'>() //достаем параметры(объект с id:); <> для подсказки params.id
-    const  some = params
+    const params = useParams<'*'>() //<'x'|'y'>достаем параметры(объект с id:); <> для подсказки params.id
+    const  some = params["*"]
     console.log(some)  //1
     return <div>PROFILE</div>
 }
@@ -20,8 +20,21 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>MAIN</div>}/>
                 <Route path={'/login'} element={<div>LOGIN</div>}/>
-                <Route path={'/profile/:x/:y'} element={<Profile/>}/>
+                <Route path={'/profile/*'} element={<Profile/>}/>
             </Routes>
+
+        {/*<div className="App">*/}
+        {/*    <NavLink to={'/'}>main</NavLink>...*/}
+        {/*    <NavLink to={'/login'}>login</NavLink>...*/}
+        {/*    <NavLink to={'/profile'}>profile</NavLink>...*/}
+        {/*    <NavLink to={'/profile/1'}>profile/1</NavLink>*/}
+
+        {/*    <Routes>*/}
+        {/*        <Route path={'/*'} element={<div>404</div>}/>*/}
+        {/*        <Route path={'/'} element={<div>MAIN</div>}/>*/}
+        {/*        <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
+        {/*        <Route path={'/profile/:x/:y'} element={<Profile/>}/>*/}
+        {/*    </Routes>*/}
 
             {/*<Routes>*/}
             {/*    <Route path={'/*'} element={<div>404</div>}/>*/}
