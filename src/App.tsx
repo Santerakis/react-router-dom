@@ -1,31 +1,40 @@
 import React, {useEffect} from 'react';
-import {Navigate, NavLink, Outlet, Route, Routes, useNavigate, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
+import {NavLink, Outlet, Route, Routes, useNavigate, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
 import './App.css';
-
-
 
 const Profile =()=>{
     const navigate = useNavigate()
 
-    // useEffect(()=>{
-    //     if (true) navigate('/login')   //редирект
-    // })
-
     return (
         <div>
-            {/*{true && <Navigate to={'/login'}/>}  //с первой отрисовкой видно*/}
-            {true ? (
-                <Navigate to={'/login'}/>
-                ) : (
-                <>
-                    profile
-                    <button onClick={()=>{navigate('/login')}}>logout</button>
-                </>
-                )}
-
+            profile
+            <button onClick={()=>{navigate(-1)}}>logout</button> //возвращение на страницу назад; если 1 - это стрелка вперед браузера
         </div>
     )
 }
+
+// const Profile =()=>{
+//     const navigate = useNavigate()
+//
+//     // useEffect(()=>{
+//     //     if (true) navigate('/login')   //редирект
+//     // })
+//
+//     return (
+//         <div>
+//             {/*{true && <Navigate to={'/login'}/>}  //с первой отрисовкой видно*/}
+//             {true ? (
+//                 <Navigate to={'/login'}/>
+//                 ) : (
+//                 <>
+//                     profile
+//                     <button onClick={()=>{navigate('/login')}}>logout</button>
+//                 </>
+//                 )}
+//
+//         </div>
+//     )
+// }
 
 const App = ()=> {
     return (
