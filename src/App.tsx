@@ -1,13 +1,28 @@
-import React from 'react';
-import {NavLink, Outlet, Route, Routes, useNavigate, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
+import React, {useEffect} from 'react';
+import {Navigate, NavLink, Outlet, Route, Routes, useNavigate, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
 import './App.css';
+
+
 
 const Profile =()=>{
     const navigate = useNavigate()
+
+    // useEffect(()=>{
+    //     if (true) navigate('/login')   //редирект
+    // })
+
     return (
         <div>
-            profile
-            <button onClick={()=>{navigate('/login')}}>logout</button>
+            {/*{true && <Navigate to={'/login'}/>}  //с первой отрисовкой видно*/}
+            {true ? (
+                <Navigate to={'/login'}/>
+                ) : (
+                <>
+                    profile
+                    <button onClick={()=>{navigate('/login')}}>logout</button>
+                </>
+                )}
+
         </div>
     )
 }
