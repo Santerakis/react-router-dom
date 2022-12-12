@@ -5,3 +5,10 @@
 .App > div {
   margin-right: 50px;
 }
+
+.def {
+  background: aquamarine;
+}
+.act {
+  background: blueviolet;
+}
