@@ -1,14 +1,26 @@
 import React, {useEffect} from 'react';
-import {NavLink, Outlet, Route, Routes, useNavigate, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
+import {NavLink, Outlet, Route, Routes, useNavigate, useParams, useSearchParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
 import './App.css';
 
 const Profile =()=>{
-    const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    console.log(searchParams.get('name'))
+    console.log(Object.fromEntries(searchParams))
+
+    useEffect(()=>{
+        console.log('research...')
+    },[searchParams])
 
     return (
         <div>
             profile
-            <button onClick={()=>{navigate(-1)}}>logout</button> {/*возвращение на страницу назад; если 1 - это стрелка вперед браузера*/}
+            <button onClick={()=>{
+                // setSearchParams({age:'32'})  //затирает старый объект
+                setSearchParams({...Object.fromEntries(searchParams), age:'32'})
+            }}>
+                logout
+            </button>
         </div>
     )
 }
