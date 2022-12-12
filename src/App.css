@@ -12,3 +12,6 @@
 .act {
   background: blueviolet;
 }
+.active {          // только не модульный css, т.к. модульный css изменяет название класса
+  font-size: 40px;
+}

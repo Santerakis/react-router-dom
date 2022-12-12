@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom';
+import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
 import './App.css';
 
 function App() {
@@ -15,7 +15,12 @@ function App() {
             >
                 profile
             </NavLink>...
-            <NavLink to={'/profile/setting'}>setting</NavLink>...
+
+            <NavLink to={'/profile/setting'}
+                     // className={'def'}
+                     className={({isActive})=> isActive ?'act' :'def'}
+            >
+                setting</NavLink>...
 
             <a href="https://github.com/IgnatZakalinsky/simple-react-homeworks"
                target={'_blank'}
