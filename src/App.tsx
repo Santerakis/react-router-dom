@@ -1,75 +1,127 @@
 import React from 'react';
-import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
+import {NavLink, Outlet, Route, Routes, useNavigate, useParams} from 'react-router-dom'; // можно облегч. Link, но не работает c callback в стилях
 import './App.css';
 
-function App() {
+const Profile =()=>{
+    const navigate = useNavigate()
+    return (
+        <div>
+            profile
+            <button onClick={()=>{navigate('/login')}}>logout</button>
+        </div>
+    )
+}
+
+const App = ()=> {
     return (
         <div className="App">
             <NavLink to={'/'}>main</NavLink>...
             <NavLink to={'/login'}>login</NavLink>...
-            <NavLink to={'/profile'}
-                     // style={{color:'lime'}}
-                     style={(params)=>{
-                        return {color: params.isActive ?'lime' :'black'}
-                     }}
-            >
-                profile
-            </NavLink>...
-
-            <NavLink to={'/profile/setting'}
-                     // className={'def'}
-                     className={({isActive})=> isActive ?'act' :'def'}
-            >
-                setting</NavLink>...
-
-            <a href="https://github.com/IgnatZakalinsky/simple-react-homeworks"
-               target={'_blank'}
-               rel={'noreferrer nofollow noopener'}
-            >
-                xxx
-            </a>
+            <NavLink to={'/profile'}>profile</NavLink>...
+            <NavLink to={'/profile/setting'}>profile/1</NavLink>
 
             <Routes>
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>MAIN</div>}/>
                 <Route path={'/login'} element={<div>LOGIN</div>}/>
-                <Route path={'/profile'} element={<div>PROFILE</div>}/>
+                <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/profile/setting'} element={<div>SETTING</div>}/>
             </Routes>
 
- {/*const Profile = ()=>{*/}
- {/*    const params = useParams<'*'>() //<'x'|'y'>достаем параметры(объект с id:); <> для подсказки params.id*/}
- {/*    const  some = params["*"]*/}
- {/*    console.log(some)  //1*/}
- {/*    return <div>PROFILE</div>*/}
- {/*}*/}
- {/*function App() {*/}
- {/*    return (*/}
- {/*        <div className="App">*/}
- {/*            <NavLink to={'/'}>main</NavLink>...*/}
- {/*            <NavLink to={'/login'}>login</NavLink>...*/}
- {/*            <NavLink to={'/profile'}>profile</NavLink>...*/}
- {/*            <NavLink to={'/profile/1'}>profile/1</NavLink>*/}
+{/*const Profile =()=>{*/}
+{/*    const navigate = useNavigate()*/}
+{/*    return (*/}
+{/*        <div>*/}
+{/*            profile*/}
+{/*            <button onClick={()=>{navigate('/login')}}>logout</button>*/}
+{/*        </div>*/}
+{/*    )*/}
+{/*}*/}
 
- {/*            <Routes>*/}
- {/*                <Route path={'/*'} element={<div>404</div>}/>*/}
- {/*                <Route path={'/'} element={<div>MAIN</div>}/>*/}
- {/*                <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
- {/*                <Route path={'/profile/*'} element={<Profile/>}/>*/}
- {/*            </Routes>*/}
+{/*const App = ()=> {*/}
+{/*    return (*/}
+{/*        <div className="App">*/}
+{/*            <NavLink to={'/'}>main</NavLink>...*/}
+{/*            <NavLink to={'/login'}>login</NavLink>...*/}
+{/*            <NavLink to={'/profile'}>profile</NavLink>...*/}
+{/*            <NavLink to={'/profile/setting'}>profile/1</NavLink>*/}
 
-        {/*<div className="App">*/}
-        {/*    <NavLink to={'/'}>main</NavLink>...*/}
-        {/*    <NavLink to={'/login'}>login</NavLink>...*/}
-        {/*    <NavLink to={'/profile'}>profile</NavLink>...*/}
-        {/*    <NavLink to={'/profile/1'}>profile/1</NavLink>*/}
+{/*            <Routes>*/}
+{/*                <Route path={'/*'} element={<div>404</div>}/>*/}
+{/*                <Route path={'/'} element={<div>MAIN</div>}/>*/}
+{/*                <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
+{/*                <Route path={'/profile'} element={<Profile/>}/>*/}
+{/*                <Route path={'/profile/setting'} element={<div>SETTING</div>}/>*/}
+{/*            </Routes>*/}
 
-        {/*    <Routes>*/}
-        {/*        <Route path={'/*'} element={<div>404</div>}/>*/}
-        {/*        <Route path={'/'} element={<div>MAIN</div>}/>*/}
-        {/*        <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
-        {/*        <Route path={'/profile/:x/:y'} element={<Profile/>}/>*/}
-        {/*    </Routes>*/}
+{/*function App() {*/}
+{/*    return (*/}
+{/*        <div className="App">*/}
+{/*            <NavLink to={'/'}>main</NavLink>...*/}
+{/*            <NavLink to={'/login'}>login</NavLink>...*/}
+{/*            <NavLink to={'/profile'}*/}
+{/*                // style={{color:'lime'}}*/}
+{/*                     style={(params) => {*/}
+{/*                         return {color: params.isActive ? 'lime' : 'black'}*/}
+{/*                     }}*/}
+{/*            >*/}
+{/*                profile*/}
+{/*            </NavLink>...*/}
+
+{/*            <NavLink to={'/profile/setting'}*/}
+{/*                // className={'def'}*/}
+{/*                     className={({isActive}) => isActive ? 'act' : 'def'}*/}
+{/*            >*/}
+{/*                setting</NavLink>...*/}
+
+{/*            <a href="https://github.com/IgnatZakalinsky/simple-react-homeworks"*/}
+{/*               target={'_blank'}*/}
+{/*               rel={'noreferrer nofollow noopener'}*/}
+{/*            >*/}
+{/*                xxx*/}
+{/*            </a>*/}
+
+{/*            <Routes>*/}
+{/*                <Route path={'/*'} element={<div>404</div>}/>*/}
+{/*                <Route path={'/'} element={<div>MAIN</div>}/>*/}
+{/*                <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
+{/*                <Route path={'/profile'} element={<div>PROFILE</div>}/>*/}
+{/*                <Route path={'/profile/setting'} element={<div>SETTING</div>}/>*/}
+{/*            </Routes>*/}
+
+            {/*const Profile = ()=>{*/}
+            {/*    const params = useParams<'*'>() //<'x'|'y'>достаем параметры(объект с id:); <> для подсказки params.id*/}
+            {/*    const  some = params["*"]*/}
+            {/*    console.log(some)  //1*/}
+            {/*    return <div>PROFILE</div>*/}
+            {/*}*/}
+            {/*function App() {*/}
+            {/*    return (*/}
+            {/*        <div className="App">*/}
+            {/*            <NavLink to={'/'}>main</NavLink>...*/}
+            {/*            <NavLink to={'/login'}>login</NavLink>...*/}
+            {/*            <NavLink to={'/profile'}>profile</NavLink>...*/}
+            {/*            <NavLink to={'/profile/1'}>profile/1</NavLink>*/}
+
+            {/*            <Routes>*/}
+            {/*                <Route path={'/*'} element={<div>404</div>}/>*/}
+            {/*                <Route path={'/'} element={<div>MAIN</div>}/>*/}
+            {/*                <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
+            {/*                <Route path={'/profile/*'} element={<Profile/>}/>*/}
+            {/*            </Routes>*/}
+
+            {/*<div className="App">*/}
+            {/*    <NavLink to={'/'}>main</NavLink>...*/}
+            {/*    <NavLink to={'/login'}>login</NavLink>...*/}
+            {/*    <NavLink to={'/profile'}>profile</NavLink>...*/}
+            {/*    <NavLink to={'/profile/1'}>profile/1</NavLink>*/}
+
+            {/*    <Routes>*/}
+            {/*        <Route path={'/*'} element={<div>404</div>}/>*/}
+            {/*        <Route path={'/'} element={<div>MAIN</div>}/>*/}
+            {/*        <Route path={'/login'} element={<div>LOGIN</div>}/>*/}
+            {/*        <Route path={'/profile/:x/:y'} element={<Profile/>}/>*/}
+            {/*    </Routes>*/}
 
             {/*<Routes>*/}
             {/*    <Route path={'/*'} element={<div>404</div>}/>*/}
