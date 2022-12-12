@@ -8,7 +8,7 @@ const Profile =()=>{
     return (
         <div>
             profile
-            <button onClick={()=>{navigate(-1)}}>logout</button> //возвращение на страницу назад; если 1 - это стрелка вперед браузера
+            <button onClick={()=>{navigate(-1)}}>logout</button> {/*возвращение на страницу назад; если 1 - это стрелка вперед браузера*/}
         </div>
     )
 }
